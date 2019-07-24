@@ -36,14 +36,14 @@ export default function TeamList() {
                         Email:
                         <input
                             type="text"
-                            placeholder="Enter your name"
+                            placeholder="Enter your email"
                          />
                     </label>
                     <label>
                         Role:
                         <input
                             type="text"
-                            placeholder="Enter your name"
+                            placeholder="Enter your role"
                          />
                     </label>
                 </fieldset>

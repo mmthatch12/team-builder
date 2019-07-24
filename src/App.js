@@ -30,16 +30,17 @@ function App(props) {
   return (
     <div className="App">
       <h1>Team List!</h1>
-      {teamArray.map(member => {
+      {member.map(member => {
         return (
           <div>
             <h3>{member.name}</h3>
             <h3>{member.email}</h3>
             <h3>{member.role}</h3>
+            <button>Edit</button>
           </div>
         ) 
       })}
-      <TeamList />
+      <TeamList member={member} addMember={addMember}/>
 
       
 
