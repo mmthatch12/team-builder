@@ -14,18 +14,22 @@ export default function TeamList() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        console.log(teamMember)
     }
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}> 
                 <fieldset>
                     <legend>Add Team Member</legend>
                     <label>
                         Name:
                         <input
                             type="text"
+                            name='name'
                             placeholder="Enter your name"
+                            value={teamMember.name}
+                            onChange={handleChange}
                          />
                     </label>
                     <label>
