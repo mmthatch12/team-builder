@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default function TeamList() {
+export default function TeamList(props) {
     const[ teamMember, setTeamMember ] = useState({ name: '', email: '', role: ''})
+
+    useEffect(() => {
+        setTeamMember(props.memberToEdit)
+    }, [props.memberToEdit])
 
     function handleChange(event) {
         console.log(
@@ -14,6 +18,7 @@ export default function TeamList() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        props.setNewMember(teamMember)
         console.log(teamMember)
     }
 
@@ -26,10 +31,10 @@ export default function TeamList() {
                         Name:
                         <input
                             type="text"
-                            name='name'
                             placeholder="Enter your name"
                             value={teamMember.name}
                             onChange={handleChange}
+                            name='name'
                          />
                     </label>
                     <label>
@@ -37,6 +42,9 @@ export default function TeamList() {
                         <input
                             type="text"
                             placeholder="Enter your email"
+                            value={teamMember.email}
+                            onChange={handleChange}
+                            name='email'
                          />
                     </label>
                     <label>
@@ -44,8 +52,12 @@ export default function TeamList() {
                         <input
                             type="text"
                             placeholder="Enter your role"
+                            value={teamMember.role}
+                            onChange={handleChange}
+                            name='role'
                          />
                     </label>
+                    <button>Submit!</button>
                 </fieldset>
                 
             </form>
