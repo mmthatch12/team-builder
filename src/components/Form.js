@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 export default function TeamList(props) {
     const[ teamMember, setTeamMember ] = useState({ name: '', email: '', role: ''})
-
-    useEffect(() => {
-        setTeamMember(props.memberToEdit)
-    }, [props.memberToEdit])
+    const[ isEditing, setIsEditing ] = useState(false)
+    
 
     function handleChange(event) {
         console.log(
@@ -18,9 +16,20 @@ export default function TeamList(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        props.setNewMember(teamMember)
+        if(isEditing === true) {
+            props.editMember(teamMember) 
+            setIsEditing(false)
+        } else {
+        props.addMember([...props.member, teamMember])
         console.log(teamMember)
+        }
     }
+
+    useEffect(() => {
+        console.log('props.mebertoedit', props.memberToEdit)
+        setTeamMember(props.memberToEdit)
+        setIsEditing(true)
+    }, [props.memberToEdit])
 
     return (
         <div>
